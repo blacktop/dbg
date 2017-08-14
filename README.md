@@ -22,13 +22,13 @@ REPOSITORY          TAG                 VIRTUAL SIZE
 blacktop/dbg        voltron             403MB
 blacktop/dbg        pwndbg              568MB
 blacktop/dbg        peda                299MB
-blacktop/dbg        gef                 525MB
+blacktop/dbg        gef                 304MB
 ```
 
 ### Getting Started
 
 ```bash
-$ docker run -d --name dbg --privileged --security-opt seccomp:unconfined blacktop/dbg
+$ docker run -d --name dbg --privileged --security-opt seccomp:unconfined -v `pwd`:/samples blacktop/dbg:voltron
 ```
 
 ### Documentation
@@ -43,8 +43,6 @@ $ docker run -d --name dbg --privileged --security-opt seccomp:unconfined blackt
 ### Issues
 
 Find a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate to [file an issue](https://github.com/blacktop/dbg/issues/new)
-
-### Credits
 
 ### Todo
 

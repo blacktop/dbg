@@ -13,7 +13,7 @@ RUN buildDeps='ca-certificates git build-essential wget cmake pkg-config' \
                          sudo \
                          ltrace \
                          strace \
-                         python \
+                         python3 \
                          locales \
                          binutils \
                          libc6:i386 \

@@ -5,14 +5,14 @@ LABEL maintainer "https://github.com/blacktop"
 ENV TERM screen-256color
 ENV GDB_VERSION 7.11.1-0ubuntu1~16.5
 
-RUN buildDeps='ca-certificates git build-essential wget cmake pkg-config python-pip' \
+RUN buildDeps='ca-certificates git build-essential wget cmake pkg-config python3-pip' \
   && dpkg --add-architecture i386 \
   && apt-get update \
   && apt-get install -yq $buildDeps \
                          sudo \
                          ltrace \
                          strace \
-                         python \
+                         python3 \
                          binutils \
                          libc6:i386 \
                          libstdc++6:i386 \
@@ -20,13 +20,13 @@ RUN buildDeps='ca-certificates git build-essential wget cmake pkg-config python-
                          gdb-multiarch=$GDB_VERSION \
   && export PIP_NO_CACHE_DIR=off \
   && export PIP_DISABLE_PIP_VERSION_CHECK=on \
-  && pip install --upgrade pip wheel \
-  && pip install ropgadget ropper capstone keystone-engine \
+  && pip3 install --upgrade pip wheel \
+  && pip3 install capstone unicorn keystone-engine ropper retdec-python\
   && echo "===> Adding gef user..." \
   && useradd -ms /bin/bash gef \
   && echo "===> Install GEF..." \
-  && wget -q -O /src/gdbinit-gef.py https://github.com/hugsy/gef/raw/master/gef.py \
-  && chmod o+r /src/gdbinit-gef.py \
+  && wget --progress=bar:force -O /home/gef/.gdbinit-gef.py https://github.com/hugsy/gef/raw/master/gef.py \
+  && chmod o+r /home/gef/.gdbinit-gef.py \
   && echo "===> Clean up unnecessary files..." \
   && apt-get purge -y --auto-remove $buildDeps \
   && apt-get clean \
@@ -34,6 +34,6 @@ RUN buildDeps='ca-certificates git build-essential wget cmake pkg-config python-
 
 USER gef
 
-RUN echo "source /src/gdbinit-gef.py" > /home/gef/.gdbinit
+RUN echo "source /home/gef/.gdbinit-gef.py" > /home/gef/.gdbinit
 
 ENTRYPOINT ["bash"]

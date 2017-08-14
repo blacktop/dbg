@@ -37,4 +37,6 @@ RUN buildDeps='ca-certificates git build-essential wget cmake pkg-config python3
 
 COPY tmuxinator/voltron.yml /home/root/.tmuxinator/voltron.yml
 
-ENTRYPOINT ["bash"]
+WORKDIR samples
+
+ENTRYPOINT ["tmux"]
