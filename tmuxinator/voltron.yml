@@ -6,7 +6,7 @@ windows:
       panes:
         - voltron view disasm
         - voltron view bp
-        - lldb
+        - gdb
         - voltron view stack
         - voltron view bt
         - voltron view reg

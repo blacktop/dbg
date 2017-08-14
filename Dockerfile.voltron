@@ -6,7 +6,7 @@ LABEL maintainer "https://github.com/blacktop"
 ENV TERM xterm-256color
 ENV GDB_VERSION 7.11.1-0ubuntu1~16.5
 
-RUN buildDeps='ca-certificates git build-essential wget cmake pkg-config python3-pip apt-utils' \
+RUN buildDeps='ca-certificates git build-essential wget pkg-config python3-pip apt-utils' \
   && dpkg --add-architecture i386 \
   && apt-get update \
   && apt-get install -yq $buildDeps \
@@ -31,11 +31,12 @@ RUN buildDeps='ca-certificates git build-essential wget cmake pkg-config python3
   && cd voltron \
   && ./install.sh -b gdb \
   && echo "===> Clean up unnecessary files..." \
+  && apt-mark tmux tmuxinator python3 \
   && apt-get purge -y --auto-remove $buildDeps \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/*
 
-COPY tmuxinator/voltron.yml /home/root/.tmuxinator/voltron.yml
+COPY tmuxinator/voltron.yml /root/.tmuxinator/voltron.yml
 
 WORKDIR samples
 
