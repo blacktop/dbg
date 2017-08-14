@@ -28,7 +28,12 @@ blacktop/dbg        gef                 304MB
 ### Getting Started
 
 ```bash
-$ docker run -d --name dbg --privileged --security-opt seccomp:unconfined -v `pwd`:/samples blacktop/dbg:voltron
+$ docker run -ti --rm \
+             --privileged \
+             --name voltron \
+             --volume `pwd`:/samples \
+             --security-opt seccomp:unconfined \
+             blacktop/dbg:voltron
 ```
 
 ### Documentation
