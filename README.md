@@ -19,7 +19,7 @@ ___
 $ docker images
 
 REPOSITORY          TAG                 VIRTUAL SIZE
-blacktop/dbg        voltron             
+blacktop/dbg        voltron             403MB
 blacktop/dbg        pwndbg              568MB
 blacktop/dbg        gef                 525MB
 ```
