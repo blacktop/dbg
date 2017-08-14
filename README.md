@@ -36,6 +36,8 @@ $ docker run -ti --rm \
              blacktop/dbg:voltron
 ```
 
+> **NOTE:** :warning: you should normally never run docker in this way *(removing all the security features)*, but it is necessary for debugging
+
 ### Documentation
 
 -	[voltron](docs/voltron.md)
