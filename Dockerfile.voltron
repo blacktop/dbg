@@ -1,0 +1,40 @@
+FROM ubuntu:xenial
+
+LABEL maintainer "https://github.com/blacktop"
+
+# ENV TERM screen-256color
+ENV TERM xterm-256color
+ENV GDB_VERSION 7.11.1-0ubuntu1~16.5
+
+RUN buildDeps='ca-certificates git build-essential wget cmake pkg-config python3-pip' \
+  && dpkg --add-architecture i386 \
+  && apt-get update \
+  && apt-get install -yq $buildDeps \
+                         sudo \
+                         tmux \
+                         ltrace \
+                         strace \
+                         python3 \
+                         locales \
+                         binutils \
+                         tmuxinator \
+                         libc6:i386 \
+                         libstdc++6:i386 \
+                         gdb=$GDB_VERSION \
+                         gdb-multiarch=$GDB_VERSION \
+  && echo "===> Fix locale..." \
+  && locale-gen en_US.UTF-8 \
+  && localedef -i en_US -f UTF-8 en_US.UTF-8 \
+  && echo "===> Install voltron..." \
+  && cd /tmp \
+  && git clone https://github.com/snare/voltron \
+  && cd voltron \
+  && ./install.sh \
+  && echo "===> Clean up unnecessary files..." \
+  && apt-get purge -y --auto-remove $buildDeps \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /tmp/*
+
+COPY tmuxinator/voltron.yml /home/root/.tmuxinator/voltron.yml
+
+ENTRYPOINT ["bash"]
