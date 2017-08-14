@@ -39,4 +39,4 @@ COPY tmuxinator/voltron.yml /home/root/.tmuxinator/voltron.yml
 
 WORKDIR samples
 
-ENTRYPOINT ["tmux"]
+ENTRYPOINT ["tmuxinator","start","voltron"]
