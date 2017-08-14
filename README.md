@@ -36,7 +36,7 @@ $ docker run -ti --rm \
              blacktop/dbg:voltron
 ```
 
-> **NOTE:** :warning: you should normally never run docker in this way *(removing all the security features)*, but it is necessary for debugging
+> :warning: **NOTE:** you should normally never run docker in this way *(removing all the security features)*, but it is necessary for debugging
 
 ### Documentation
 
@@ -45,7 +45,7 @@ $ docker run -ti --rm \
 -	[peda](docs/peda.md)
 -	[gef](docs/gef.md)
 
-### Known Issues :warning:
+### Known Issues
 
 ### Issues
 
