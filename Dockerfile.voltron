@@ -15,6 +15,7 @@ RUN buildDeps='ca-certificates git build-essential wget pkg-config python3-pip a
                          ltrace \
                          strace \
                          python3 \
+                         ruby2.3 \
                          locales \
                          binutils \
                          tmuxinator \
@@ -31,7 +32,7 @@ RUN buildDeps='ca-certificates git build-essential wget pkg-config python3-pip a
   && cd voltron \
   && ./install.sh -b gdb \
   && echo "===> Clean up unnecessary files..." \
-  && apt-mark hold ruby2.3 tmux tmuxinator python3 \
+  && apt-mark hold tmux tmuxinator \
   && apt-get purge -y --auto-remove $buildDeps \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/*
