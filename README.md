@@ -35,6 +35,7 @@ $ docker run -d --name dbg --privileged --security-opt seccomp:unconfined blackt
 
 -	[voltron](docs/voltron.md)
 -	[pwndbg](docs/pwndbg.md)
+-	[peda](docs/peda.md)
 -	[gef](docs/gef.md)
 
 ### Known Issues :warning:
