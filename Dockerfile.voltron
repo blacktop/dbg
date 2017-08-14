@@ -33,7 +33,7 @@ RUN buildDeps='ca-certificates git build-essential wget pkg-config apt-utils' \
   && ./install.sh -b gdb \
   && echo "===> Clean up unnecessary files..." \
   && apt-get purge -y --auto-remove $buildDeps \
-  && apt-get install tmuxinator \
+  && apt-get install -y tmuxinator \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/*
 
