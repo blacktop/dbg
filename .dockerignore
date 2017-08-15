@@ -4,6 +4,7 @@
 
 .circleci*
 docs*
+samples*
 
 README.md
 README.md.bu

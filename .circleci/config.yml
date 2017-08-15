@@ -43,7 +43,7 @@ jobs:
           no_output_timeout: 1m
           command: |
             set -x
-            docker run -it --rm app
+            docker run -it --rm --entrypoint=bash app -c "voltron --help"
       # - deploy:
       #     name: Push application Docker image
       #     command: |
